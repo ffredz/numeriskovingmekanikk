@@ -50,6 +50,7 @@ plt.show()
 
 
 #1.3 b
+T = 10
 def energi(theta_0, n,h,l,m):
     w0 = np.sqrt(G/l)
     theta = np.zeros(n)
@@ -57,8 +58,9 @@ def energi(theta_0, n,h,l,m):
     theta_hjelp = np.zeros(n)
 
     for i in range(1,len(theta)):
-        theta[i]=theta[i-1] + h*theta_hjelp[i-1]
         theta_hjelp[i]=theta_hjelp[i-1]-h*(w0**2)*np.sin(theta[i-1])
+        theta[i]=theta[i-1] + h*theta_hjelp[i] #symplektisk euler
+        
     t = np.arange(0, n*h, h)
 
     U=m*G*l*(1-np.cos(theta))
@@ -69,16 +71,19 @@ def energi(theta_0, n,h,l,m):
 tidssteg = [10**(-3),10**(-2),10**(-1)]
 
 for k in range(len(tidssteg)):
-    energiinfo = energi(.5,1000,tidssteg[k],.1,.1)
+    n = int(T/tidssteg[k])
+    energiinfo = energi(.5,n,tidssteg[k],.1,.1)
     potensiell = energiinfo[0]
     kinetisk = energiinfo[1]
     t = energiinfo[2]
-    plt.plot(t,potensiell, label=f'Potensiell energi med tidssteg {tidssteg[k]}')
-    plt.plot(t,kinetisk, label=f'kinetisk energi med tidssteg {tidssteg[k]}')
+    plt.plot(t,potensiell, label=f'Potensiell energi')
+    plt.plot(t,kinetisk, label=f'kinetisk energi')
     totalenergi = potensiell+kinetisk
-    plt.plot(t,totalenergi, label=f'Total energi med tidssteg {tidssteg[k]}')
-plt.legend()
-plt.show()
+    plt.plot(t,totalenergi, label=f'Total energi')
+    plt.grid()
+    plt.title(f'Energi med tidssteg {tidssteg[k]}')
+    plt.legend()
+    plt.show()
 
 
 
