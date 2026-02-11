@@ -45,7 +45,7 @@ plt.xlabel("tid")
 plt.ylabel("vinkel i rad")
 plt.legend()
 plt.grid()
-#plt.show()
+plt.show()
 
 
 V = -m*L*G*(np.cos(resultat.y[0])+np.cos(resultat.y[2])) #potensiell energi..
@@ -81,7 +81,7 @@ pos_x2 = pos_bjelke +L*np.sin(resultat.y[2]) #driter i delta siden den er konsta
 x_cm = (M*pos_bjelke + m*(pos_x1+pos_x2))/M_tot 
 
 plt.figure(figsize=(10,5))
-plt.plot(resultat.t, x_cm, label="Massesenter $x_{cm}$")
+plt.plot(resultat.t, x_cm, label="Massesenter Xcm")
 plt.axhline(0, color='black', linestyle='--', alpha=0.5) # Referanselinje ved 0
 plt.title("Massesenterets posisjon over tid")
 plt.xlabel("Tid (s)")
