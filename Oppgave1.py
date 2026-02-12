@@ -6,8 +6,7 @@ import matplotlib.pyplot as plt
 G = 9.81 #m/s^2
 init_values = [.1,.5,1]
 
-def diffeq(g,l):
-    return 
+
 def euler(theta_0,n,h,l):
     w0 = np.sqrt(G/l)
     theta = np.zeros(n)
