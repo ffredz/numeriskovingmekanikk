@@ -37,7 +37,6 @@ for k in range(len(init_values)):
     t = stuff[1]
     plt.plot(t,theta_values,label= f'euler med theta0 = {init_values[k]}')
     
-    
 anal = analytisk(1,1000,.1,.001)
 plt.plot(anal[1],anal[0],label = "normalisert og linearisert analytisk")
 plt.title("Normaliserte numeriske løsninger vs linearisert analytisk")
